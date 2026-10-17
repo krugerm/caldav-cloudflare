@@ -1,0 +1,11 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example//LF only//EN
+BEGIN:VEVENT
+UID:lf-only@example.com
+DTSTAMP:20261016T000000Z
+DTSTART:20261030T180000Z
+DURATION:PT2H
+SUMMARY:Stored with LF line endings, which the server must not normalise
+END:VEVENT
+END:VCALENDAR

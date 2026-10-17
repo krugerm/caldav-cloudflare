@@ -1,0 +1,38 @@
+{
+  "name": "caldav-cloudflare",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CalDAV server for calendars and tasks on Cloudflare Workers, D1, R2 and Queues",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler d1 migrations apply caldav --local && wrangler dev",
+    "deploy": "wrangler deploy && wrangler d1 migrations apply caldav --remote",
+    "test": "vitest run",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "typecheck": "tsc --noEmit",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.11.2",
+    "ical.js": "^2.2.1"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "^1.4.4",
+    "@cloudflare/workers-types": "^5.20261016.1",
+    "@vitest/runner": "4.1",
+    "@vitest/snapshot": "4.1",
+    "tsdav": "^2.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "4.1",
+    "wrangler": "^4.151.1"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "workerd@1.20261012.1": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krugerm/caldav-cloudflare"
+  }
+}

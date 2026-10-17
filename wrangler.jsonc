@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "caldav-cloudflare",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "caldav", "migrations_dir": "migrations" }
+  ],
+  "r2_buckets": [
+    { "binding": "BODIES", "bucket_name": "caldav-bodies" }
+  ],
+  "queues": {
+    "producers": [{ "binding": "CHANGES", "queue": "caldav-changes" }]
+  },
+  "triggers": {
+    // every minute: re-send unpublished events; daily: prune change log, sweep R2
+    "crons": ["* * * * *", "17 3 * * *"]
+  },
+  "vars": {
+    "QUOTA_BYTES": "1073741824",
+    "MAX_OBJECT_BYTES": "10485760",
+    "R2_THRESHOLD_BYTES": "262144",
+    "CHANGE_RETENTION_DAYS": "90"
+  }
+}

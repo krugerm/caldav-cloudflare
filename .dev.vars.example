@@ -1,0 +1,5 @@
+# Admin login for /admin. Set real values as Worker secrets:
+#   npx wrangler secret put ADMIN_USERNAME
+#   npx wrangler secret put ADMIN_PASSWORD
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=change-me-to-a-long-random-string
